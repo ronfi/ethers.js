@@ -701,9 +701,11 @@ export class BaseProvider extends Provider implements EnsProvider {
 
         } else {
             // Notify all listener for each block that has passed
-            for (let i = (<number>this._emitted.block) + 1; i <= blockNumber; i++) {
-                this.emit("block", i);
-            }
+            // for (let i = (<number>this._emitted.block) + 1; i <= blockNumber; i++) {
+            //     this.emit("block", i);
+            // }
+            // only notify the latest block @20210908
+            this.emit("block", blockNumber);
         }
 
         // The emitted block was updated, check for obsolete events
